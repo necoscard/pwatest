@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello PWA</title>
+    <link rel="manifest" href="offline_manifest.json" crossorigin="use-credentials">
+    <link rel="icon" href="icon.png">
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <h1>Hello PWA!</h1>
+    <p>Androidでオフラインでも動くサンプルアプリです。</p>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('Service Worker registered.'))
+                    .catch(err => console.log('Service Worker failed.', err));
+            });
+        }
+    </script>
+</body>
+</html>
